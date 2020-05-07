@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/daprpoc.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "appId": "app",
+            "appPort": 5000,
+            "label": "daprd-debug",
+            "type": "daprd",
+            "dependsOn": "build"
+        },
+        {
+            "appId": "app",
+            "label": "daprd-down",
+            "type": "daprd-down"
+        }
+    ]
+}
