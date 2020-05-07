@@ -18,8 +18,9 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "appId": "app",
+            "appId": "pocapp",
             "appPort": 5000,
+            "enableMetrics": false,
             "label": "daprd-debug",
             "type": "daprd",
             "dependsOn": "build"

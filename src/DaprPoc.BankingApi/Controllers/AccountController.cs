@@ -17,7 +17,6 @@ namespace DaprPoc.BankingApi.Controllers
     /// Sample showing Dapr integration with controller.
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
         /// <summary>
@@ -42,8 +41,12 @@ namespace DaprPoc.BankingApi.Controllers
         {
             if (account.Value is null)
             {
+                _logger.LogWarning($"Account with Id {account.Key} not found.");
+
                 return this.NotFound();
             }
+
+            _logger.LogInformation($"Account with Id {account.Key} and Amount {account.Value} returned to client OK.");
 
             return account.Value;
         }
@@ -59,9 +62,15 @@ namespace DaprPoc.BankingApi.Controllers
         public async Task<ActionResult<Account>> Deposit(Transaction transaction, [FromServices] DaprClient daprClient)
         {
             var state = await daprClient.GetStateEntryAsync<Account>(StoreName, transaction.Id);
+
             state.Value ??= new Account() { Id = transaction.Id, };
+
             state.Value.Balance += transaction.Amount;
+
             await state.SaveAsync();
+
+            _logger.LogInformation($"Transaction with Id {transaction.Id} and Amount {transaction.Amount} deposited OK.");
+
             return state.Value;
         }
 
@@ -79,11 +88,17 @@ namespace DaprPoc.BankingApi.Controllers
 
             if (state.Value == null)
             {
+                _logger.LogWarning($"Transaction with Id {transaction.Id} not found.");
+
                 return this.NotFound();
             }
 
             state.Value.Balance -= transaction.Amount;
+
             await state.SaveAsync();
+
+            _logger.LogInformation($"Transaction with Id {transaction.Id} and Amount {transaction.Amount} withdrawn OK.");
+
             return state.Value;
         }
     }
