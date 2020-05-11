@@ -1,5 +1,5 @@
 ### deposit
-POST http://localhost:5000/account/deposit HTTP/1.1
+POST http://localhost:5000/deposit HTTP/1.1
 Content-Type: application/json
 
 { 
