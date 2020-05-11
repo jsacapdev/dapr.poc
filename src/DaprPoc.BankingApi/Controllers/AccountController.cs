@@ -1,17 +1,12 @@
-﻿using System;
+﻿using DaprPoc.BankingApi.Model;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Dapr;
 using Dapr.Client;
-using DaprPoc.BankingApi.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace DaprPoc.BankingApi.Controllers
 {
-    using System.Threading.Tasks;
-    using Dapr;
-    using Dapr.Client;
-    using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
     /// Sample showing Dapr integration with controller.
