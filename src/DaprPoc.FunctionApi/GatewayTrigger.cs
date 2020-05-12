@@ -27,8 +27,8 @@ namespace DaprPoc.FunctionApi
             _logger = logger;
         }
 
-        [FunctionName("GatewayTrigger")]
-        public async Task Run(
+        [FunctionName(Constants.GatewayTrigger)]
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
         {
             try
@@ -38,10 +38,14 @@ namespace DaprPoc.FunctionApi
                 var account = await _bankingClient.Deposit(transaction);
 
                 _logger.LogInformation("Submitted transaction OK");
+
+                return new OkObjectResult(account);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex);
+
+                return new BadRequestResult();
             }
         }
     }
