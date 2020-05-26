@@ -12,7 +12,9 @@ namespace DaprPoc.FunctionApi
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            string baseUri = $"http://localhost:{Environment.GetEnvironmentVariable("DAPR_HTTP_PORT")}/";
+            var port = Environment.GetEnvironmentVariable("DAPR_HTTP_PORT");
+
+            string baseUri = $"http://localhost:{port}/";
 
             builder.Services.AddRefitClient<IBankingClient>()
                     .ConfigureHttpClient(c => c.BaseAddress = new Uri(baseUri));

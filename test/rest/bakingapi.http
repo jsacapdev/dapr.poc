@@ -1,4 +1,4 @@
-### deposit
+### direct - deposit
 POST http://localhost:5000/deposit HTTP/1.1
 Content-Type: application/json
 
@@ -7,7 +7,7 @@ Content-Type: application/json
     "amount": 12 
 }
 
-### withdraw
+### direct - withdraw
 POST http://localhost:5000/withdraw HTTP/1.1
 Content-Type: application/json
 
@@ -16,10 +16,10 @@ Content-Type: application/json
     "amount": 5 
 }
 
-### balance
+### direct - balance
 GET http://localhost:5000/17 HTTP/1.1
 
-### via the sidecar
+### dapr - withdraw
 
 POST http://localhost:37318/v1.0/invoke/bankingapi/method/withdraw HTTP/1.1
 Content-Type: application/json
@@ -29,12 +29,6 @@ Content-Type: application/json
     "amount": 5 
 }
 
-### via the sidecar
+### dapr - get
 
 GET http://localhost:37318/v1.0/invoke/bankingapi/method/17 HTTP/1.1
-
-### via the function, that is then via the sidecar
-
-GET http://localhost:7071/api/GatewayTrigger HTTP/1.1
-
-

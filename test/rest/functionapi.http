@@ -1,0 +1,7 @@
+### direct
+
+GET http://localhost:7071/api/GatewayTrigger HTTP/1.1
+
+###
+
+GET http://localhost:37319/v1.0/invoke/functionapi/method/api/gatewaytrigger HTTP/1.1
