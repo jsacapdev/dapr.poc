@@ -12,13 +12,23 @@ so these examples show that when the application is running, dapr injects the si
 
 `dapr run --app-id bankingapi --app-port 5000 --port 37318 dotnet run`
 
+export ASPNETCORE_URLS="http://localhost:3000"
+
+export ASPNETCORE_URLS=http://localhost:3000
+
+`dapr run --app-id bankingapi --app-port 3000 --port 3500 dotnet run`
+
 ## function api
 
 this is also inject the sidecar into the function.so both are running using the side car. really kool. but in this case we are not using any native bindings. also notice that the function always go's through the sidecar.
 
 `export DAPR_HTTP_PORT=37318`
 
+`export DAPR_HTTP_PORT=3500`
+
 `dapr run --app-id functionapi --app-port 7071 --port 37319 func start`
+
+`dapr run --app-id functionapi --app-port 7071 --port 3500 func start`
 
 Run it up in vscode.
 

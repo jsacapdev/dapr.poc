@@ -1,0 +1,7 @@
+###
+
+GET http://localhost:8000/weatherforecast HTTP/1.1
+
+###
+GET http://137.117.180.18/weatherforecast HTTP/1.1
+

@@ -1,3 +1,11 @@
 bin
 obj
+
 local.settings.json
+
+acr.md
+az.md
+docker.md
+kubectl.md
+nw.md
+td.md

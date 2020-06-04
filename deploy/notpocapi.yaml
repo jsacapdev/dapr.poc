@@ -1,0 +1,38 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: notpocapi
+  labels:
+    app: notpocapi
+spec:
+  selector:
+    app: notpocapi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notpocapi
+  labels:
+    app: notpocapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notpocapi
+  template:
+    metadata:
+      labels:
+        app: notpocapi
+    spec:
+      containers:
+      - name: notpocapi
+        image: jsacapdev/notpocapi:alpine
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always

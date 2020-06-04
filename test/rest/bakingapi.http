@@ -1,5 +1,5 @@
-### direct - deposit
-POST http://localhost:5000/deposit HTTP/1.1
+### 
+POST http://localhost:3000/deposit HTTP/1.1
 Content-Type: application/json
 
 { 
@@ -7,7 +7,7 @@ Content-Type: application/json
     "amount": 12 
 }
 
-### direct - withdraw
+### 
 POST http://localhost:5000/withdraw HTTP/1.1
 Content-Type: application/json
 
@@ -16,12 +16,11 @@ Content-Type: application/json
     "amount": 5 
 }
 
-### direct - balance
-GET http://localhost:5000/17 HTTP/1.1
+### 
+GET http://localhost:8000/17 HTTP/1.1
 
-### dapr - withdraw
-
-POST http://localhost:37318/v1.0/invoke/bankingapi/method/withdraw HTTP/1.1
+### 
+POST http://localhost:3500/v1.0/invoke/bankingapi/method/deposit HTTP/1.1
 Content-Type: application/json
 
 { 
@@ -29,6 +28,14 @@ Content-Type: application/json
     "amount": 5 
 }
 
-### dapr - get
+### 
+POST http://localhost:3500/v1.0/invoke/bankingapi/method/withdraw HTTP/1.1
+Content-Type: application/json
 
-GET http://localhost:37318/v1.0/invoke/bankingapi/method/17 HTTP/1.1
+{ 
+    "id": "17", 
+    "amount": 5 
+}
+
+###
+GET http://localhost:3500/v1.0/invoke/bankingapi/method/17 HTTP/1.1

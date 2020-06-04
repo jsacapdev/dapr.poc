@@ -1,0 +1,42 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: bankingapi
+  labels:
+    app: bankingapi
+spec:
+  selector:
+    app: bankingapi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bankingapi
+  labels:
+    app: bankingapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bankingapi
+  template:
+    metadata:
+      labels:
+        app: bankingapi
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/id: "bankingapi"
+        dapr.io/port: "3000"
+    spec:
+      containers:
+      - name: bankingapi
+        image: jsacapdev/bankingapi:alpine
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
