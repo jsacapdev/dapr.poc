@@ -29,10 +29,8 @@ namespace DaprPoc.FunctionApi
 
         [FunctionName(Constants.GatewayTrigger)]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] Transaction transaction)
         {
-            var transaction = new Transaction { Id = "17", Amount = 10 };
-
             var account = await _bankingClient.Deposit(transaction);
 
             _logger.LogInformation("Submitted transaction OK");

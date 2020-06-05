@@ -2,7 +2,13 @@
 GET http://localhost:7071/api/GatewayTrigger HTTP/1.1
 
 ### 
-GET http://52.142.213.138/api/GatewayTrigger HTTP/1.1
+POST http://52.142.213.138/api/GatewayTrigger HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "id": "19", 
+    "amount": 5 
+}
 
 ###
 GET http://localhost:3501/v1.0/invoke/functionapi/method/api/gatewaytrigger HTTP/1.1
