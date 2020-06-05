@@ -12,11 +12,7 @@ so these examples show that when the application is running, dapr injects the si
 
 `dapr run --app-id bankingapi --app-port 5000 --port 37318 dotnet run`
 
-export ASPNETCORE_URLS="http://localhost:3000"
-
-export ASPNETCORE_URLS=http://localhost:3000
-
-`dapr run --app-id bankingapi --app-port 3000 --port 3500 dotnet run`
+`dapr run --app-id bankingapi --app-port 5000 --port 3500 dotnet run`
 
 ## function api
 

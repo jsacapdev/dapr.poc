@@ -29,24 +29,18 @@ namespace DaprPoc.FunctionApi
 
         [FunctionName(Constants.GatewayTrigger)]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
-            try
-            {
-                var transaction = new Transaction { Id = "17", Amount = 10 };
+            var port = Environment.GetEnvironmentVariable("DAPR_HTTP_PORT");
+            Console.WriteLine($"--->{port}");
 
-                var account = await _bankingClient.Deposit(transaction);
+            var transaction = new Transaction { Id = "17", Amount = 10 };
 
-                _logger.LogInformation("Submitted transaction OK");
+            var account = await _bankingClient.Deposit(transaction);
 
-                return new OkObjectResult(account);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message, ex);
+            _logger.LogInformation("Submitted transaction OK");
 
-                return new BadRequestResult();
-            }
+            return new OkObjectResult(account);
         }
     }
 }
