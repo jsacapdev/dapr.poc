@@ -20,6 +20,18 @@ Content-Type: application/json
 GET http://localhost:8000/17 HTTP/1.1
 
 ### 
+POST https://51.136.10.3/deposit HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "id": "17", 
+    "amount": 12 
+}
+
+### 
+GET http://51.136.10.3/17 HTTP/1.1
+
+### 
 POST http://localhost:3500/v1.0/invoke/bankingapi/method/deposit HTTP/1.1
 Content-Type: application/json
 

@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: bankingapi
-        image: jsacapdev/bankingapi:alpine
+        image: patternsaksdevacrwe.azurecr.io/daprpoc/bankingapi:alpine
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
