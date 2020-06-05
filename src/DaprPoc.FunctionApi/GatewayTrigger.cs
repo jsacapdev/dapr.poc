@@ -31,9 +31,6 @@ namespace DaprPoc.FunctionApi
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
         {
-            var port = Environment.GetEnvironmentVariable("DAPR_HTTP_PORT");
-            Console.WriteLine($"--->{port}");
-
             var transaction = new Transaction { Id = "17", Amount = 10 };
 
             var account = await _bankingClient.Deposit(transaction);

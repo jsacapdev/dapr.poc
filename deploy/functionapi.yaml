@@ -1,0 +1,41 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: functionapi
+  labels:
+    app: functionapi
+spec:
+  selector:
+    app: functionapi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: functionapi
+  labels:
+    app: functionapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: functionapi
+  template:
+    metadata:
+      labels:
+        app: functionapi
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/id: "functionapi"
+    spec:
+      containers:
+      - name: functionapi
+        image: patternsaksdevacrwe.azurecr.io/daprpoc/functionapi
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always

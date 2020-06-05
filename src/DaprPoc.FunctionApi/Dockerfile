@@ -9,10 +9,7 @@ RUN cd /src/dotnet-function-app && \
 # FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice
 FROM mcr.microsoft.com/azure-functions/dotnet:3.0
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-
-ENV DAPR_HTTP_PORT 3500
-
-EXPOSE 3500
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+    DAPR_HTTP_PORT=3500
 
 COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
