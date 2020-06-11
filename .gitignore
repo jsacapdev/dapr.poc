@@ -4,7 +4,8 @@ obj
 local.settings.json
 
 acr.md
-az.md
+aks.md
+cosmos.md
 docker.md
 kubectl.md
 nw.md
