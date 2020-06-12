@@ -43,3 +43,11 @@ With the simple sample we can see the rest interface, but also is the sidecar of
 ## command line function api
 
 `dapr invoke --app-id functionapi --method api/gatewaytrigger`
+
+## install on k8s
+
+`dapr init --kubernetes`
+
+`dapr status -k`
+
+`dapr uninstall --kubernetes`

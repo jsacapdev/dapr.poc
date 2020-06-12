@@ -16,7 +16,7 @@ Content-Type: application/json
 
 [
     {
-        "id": "account"
+        "value": "{"Id":\"22\",\"Balance\":5}"
     }
 ]
 

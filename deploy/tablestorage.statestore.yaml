@@ -2,12 +2,13 @@ apiVersion: dapr.io/v1alpha1
 kind: Component
 metadata:
   name: statestore
+#   namespace: <NAMESPACE>
 spec:
   type: state.azure.tablestorage
   metadata:
   - name: accountName
-    value: patternsaksdevwe
+    value: 
   - name: accountKey
-    value: yvch3jHfKEK+m3c8I7K+Dfua2VsUAf0PyNo/AOSs1UukdzATuCT0V/iL5GYk55MdDxOPGNBq7haoIHtc+V2cXw==
+    value: 
   - name: tableName
-    value: daprpoc
+    value: 
