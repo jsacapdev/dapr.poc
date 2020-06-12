@@ -14,6 +14,8 @@ so these examples show that when the application is running, dapr injects the si
 
 `dapr run --app-id bankingapi --app-port 5000 --port 3500 dotnet run`
 
+`dapr run --components-path ./components --app-id bankingapi --app-port 5000 --port 3500 dotnet run`
+
 ## function api
 
 this is also inject the sidecar into the function.so both are running using the side car. really kool. but in this case we are not using any native bindings. also notice that the function always go's through the sidecar.
